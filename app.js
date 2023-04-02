@@ -8,9 +8,13 @@ const port = process.env.port || 3000;
 //     console.log(ss)
 // });
 
+
+app.get("/",(req,res)=>{
+    res.send("ss app live..");
+})
 //captureWebsite.buffer(input, options?)
 app.post("/ss", async (req, res) => {
-	await captureWebsite
+	const ss = await captureWebsite
 		.buffer("https://newyork-centralpost.com")
 		.then((ss) => {
 			console.log(ss);
@@ -19,6 +23,8 @@ app.post("/ss", async (req, res) => {
 		.catch((e) => {
 			res.send(e);
 		});
+
+        res.send(ss);
 });
 
 app.listen(port, () => {
